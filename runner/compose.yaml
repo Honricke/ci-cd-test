@@ -1,0 +1,12 @@
+services:
+  runner:
+    build: .
+    container_name: gh-runner
+    restart: unless-stopped
+    environment:
+      GITHUB_URL: ${GITHUB_URL:?defina GITHUB_URL no .env}
+      RUNNER_TOKEN: ${RUNNER_TOKEN:-}
+      RUNNER_NAME: ${RUNNER_NAME:-}
+      RUNNER_LABELS: ${RUNNER_LABELS:-}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
