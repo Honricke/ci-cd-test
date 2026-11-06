@@ -1,0 +1,19 @@
+name: Pipeline CI
+on:
+    push:
+        branches: [ main ]
+    pull_request:
+        branches: [ main ]
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Baixando código
+              uses: actions/checkout@v4
+
+            - name: Rodando lint e testes
+              run: docker build --target test .
+
+            - name: Buildando imagem de produção
+              run: docker build --target prod -t ci-cd-test .
