@@ -10,7 +10,7 @@ RUN npm ci
 # Se lint ou teste falhar, o build falha.
 FROM deps AS test
 COPY . .
-RUN npm ci-cd-test run lint && npm test
+RUN npm run lint && npm test
 
 # Stage 3: compila TypeScript para dist/
 FROM deps AS build
