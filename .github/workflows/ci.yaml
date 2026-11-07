@@ -2,7 +2,7 @@ name: Pipeline CI
 on:
   push:
     branches: [main]
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
   test:
@@ -23,4 +23,4 @@ jobs:
       - run: npm run build
 
       - name: Salvando Artefact
-        uses: actions/upload-artefact@v4
+        uses: actions/upload-artifact@v4
